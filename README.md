@@ -1,9 +1,9 @@
 # Phishing_URL_Identification
 ## Pretrained n-gram Embeddings 
-Pretrained embeddings are available at https://drive.google.com/file/d/1skyPXLXs_pl9-F-uW6esazvtTDFkOqkT/view?usp=sharing  
+Pretrained embeddings are available at https://drive.google.com/drive/folders/1O9Osvy2BvlvVFAP8qsHnGLW35LPxYTnX?usp=sharing
 
 ## Datasets
-Datasets are available at 
+Datasets are available at https://drive.google.com/drive/folders/10YHBBt520LuMcPbKAj7_f0j3kbF0Yr_q?usp=sharing
 
-## Language Model and classifiers (ML & DL)
+## Proposed MOdel
 
