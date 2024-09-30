@@ -1,0 +1,123 @@
+{
+  "device": "cpu",
+  "num_folds": 10,
+  "results_saved_file_path": "results/results_EBBU2017_ngram_4_42rs_10folds.csv",
+  "algorithms": ["TextRCNN"],
+  "data_dir": "Processed_Dataset/EBBU2017_full_dataset/ngram_4_42_10folds",
+
+  "task_info":{
+    "label_type": "multi_label",
+    "hierarchical": false,
+    "hierar_taxonomy": "data/rcv1.taxonomy",
+    "hierar_penalty": 0.000001
+  },
+  "model_name": "TextRCNN",
+  "checkpoint_dir": "checkpoint_dir",
+  "model_dir": "trained_model",
+  "data": {
+     "train_json_files": [
+      null
+    ],
+    "validate_json_files": [
+      null
+    ],
+    "test_json_files": [
+      null
+    ],
+    "generate_dict_using_json_files": true,
+    "generate_dict_using_all_json_files": true,
+    "generate_dict_using_pretrained_embedding": true,
+    "dict_dir": "checkpoint_dir/dict_rcv3",
+    "num_worker": 4
+  },
+  "feature": {
+    "feature_names": [
+      "token"
+    ],
+    "min_token_count": 2,
+    "min_char_count": 2,
+    "token_ngram": 0,
+    "min_token_ngram_count": 0,
+    "min_keyword_count": 0,
+    "min_topic_count": 2,
+    "max_token_dict_size": 1000000,
+    "max_char_dict_size": 150000,
+    "max_token_ngram_dict_size": 10000000,
+    "max_keyword_dict_size": 100,
+    "max_topic_dict_size": 100,
+    "max_token_len": 256,
+    "max_char_len": 1024,
+    "max_char_len_per_token": 4,
+    "token_pretrained_file": "Processed_Dataset/EBBU2017_full_dataset/word_embedding/DeepWalks[100, 0, 0, 0]emb-128ngram-4-str-1seqB.emb",
+    "keyword_pretrained_file": ""
+  },
+  "train": {
+    "batch_size": 64,
+    "start_epoch": 1,
+    "num_epochs": 20,
+    "num_epochs_static_embedding": 0,
+    "decay_steps": 1000,
+    "decay_rate": 1.0,
+    "clip_gradients": 100.0,
+    "l2_lambda": 0.0,
+    "loss_type": "BCEWithLogitsLoss",
+    "sampler": "fixed",
+    "num_sampled": 5,
+    "visible_device_list": "0",
+    "hidden_layer_dropout": 0.0
+  },
+  "embedding": {
+    "type": "embedding",
+    "dimension": 128,
+    "region_embedding_type": "context_word",
+    "region_size": 5,
+    "initializer": "uniform",
+    "fan_mode": "FAN_IN",
+    "uniform_bound": 0.25,
+    "random_stddev": 0.01,
+    "dropout": 0.3
+  },
+  "optimizer": {
+    "optimizer_type": "Adam",
+    "learning_rate": 0.005,
+    "adadelta_decay_rate": 0.95,
+    "adadelta_epsilon": 1e-08
+  },
+  "eval": {
+    "text_file": "data/test.json",
+    "threshold": 0.5,
+    "dir": "results/eval_dir",
+    "batch_size": 1024,
+    "is_flat": true,
+    "top_k": 16,
+    "model_dir": "checkpoint_dir/TextRCNN_best"
+  },
+  "TextRCNN": {
+    "kernel_sizes": [
+        4,
+        5,
+        6
+    ],
+    "num_kernels": 150,
+    "top_k_max_pooling": 1,
+    "hidden_dimension":32,
+    "rnn_type": "GRU",
+    "num_layers": 4,
+    "doc_embedding_type": "Attention",
+    "attention_dimension": 16,
+    "bidirectional": true
+  },
+  "Transformer": {
+    "d_inner": 128,
+    "d_k": 32,
+    "d_v": 32,
+    "n_head": 4,
+    "n_layers": 1,
+    "dropout": 0.3,
+    "use_star": true
+  },
+  "log": {
+    "logger_file": "checkpoint_dir/log_test_rcv1_hierar",
+    "log_level": "warn"
+  }
+}
